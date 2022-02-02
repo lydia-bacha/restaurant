@@ -1,0 +1,51 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}Le panier{% endblock %}
+
+{% block body %}
+<br><br><br>
+<section class="bg-light p-3">
+    <h2>Votre panier</h2>
+</section>
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Menu</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for element in dataPanier %}
+            <tr>
+                <td>{{element.menu.nom}}</td>
+                <td>{{element.menu.prix}}</td>
+                <td>{{element.quantite}}</td>
+                <td>{{element.quantite * element.menu.prix}}</td>
+                <td>
+                    <a href="{{path ("panier_add", {"id":element.menu.id})}}"><button class= "btn btn-success">Ajouter</button></a>
+                    <a href="{{path ("panier_remove", {"id":element.menu.id})}}"><button class= "btn btn-warning">Spprimer</button></a>
+                    <a href="{{path ("panier_delete", {"id":element.menu.id})}}"><button class= "btn btn-danger">Effacer</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="text-center"> Votre panier est vide </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>{{total}}</td>
+            <td><a href="{{path ("panier_deleteAll")}}"><button class= "btn "><i class="fas fa-trash text-danger"></i></button></a></td>
+        </tr>
+    </tfoot>
+
+</table>
+</div>
+{# {{dump()}} #}
+{% endblock %}

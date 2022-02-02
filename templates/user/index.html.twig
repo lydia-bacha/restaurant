@@ -1,0 +1,44 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}les utilisateurs {% endblock %}
+
+{% block body %}
+    <h1>La liste des utlisateurs inscrits sur le site</h1>
+
+{% if is_granted ('ROLE_ADMIN') %}
+    <p class="text">Vous souhaitez créer un nouveau administrateur cliquez sur ce lien:
+     <a href="{{ path('user_new') }}">un nouveau admin</a> </p> 
+{% endif %}
+
+<div class="container-tableau">
+    <table class="table table-secondary table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}"> <button class="btn btn-info"> <i class="far fa-eye"></i> </button>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}"> <button class="btn btn-info"><i class="fas fa-user-edit"></i> </button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Calendrier de réservation {% endblock %}
+
+{% block body %}
+ 
+    <div id="calendar">
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // chercher la div qui va contenir le calenderier
+        var calendarEl = document.getElementById('calendar');
+        // instancie le calendrier
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          //charge le composant "dayGrid"
+           // plugins: [ 'dayGrid' ],
+          // personnaliser le calenderier 
+             locale:'fr',
+             timezone:'Europe/Paris',
+             headerToolbar: {
+                start:'prev,next,today',
+                center:'title',
+                end: 'dayGridMonth,timeGridWeek' 
+            },
+            events: {{ data|raw }},
+        });
+       // afficher le calendrier
+        calendar.render();
+      });
+
+    </script>
+
+    
+    </div>
+{% endblock %}

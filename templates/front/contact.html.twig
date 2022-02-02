@@ -1,0 +1,49 @@
+{% extends "front/layout.html.twig"%}
+
+{% block body %}
+ <section class="contact">
+   <h1>Formulaire de contact</h1>
+
+</section>
+    {# afficher le message de réservation efféctué #}
+    {% if app.flashes("info") is defined  %} 
+        {% for message in app.flashes("info")%}
+            <div class= "textMessge">
+                {{message}}
+            </div>
+    {% endfor %}
+    {% endif %} 
+  <h2>Contactez nous</h2>
+<div class="container">
+  <div class="row">
+  <div class="col-12 col-sm-6 col-lg-6">
+
+    <p class="text" >Vous voulez en savoir plus sur Le Café Gourmand?</p>
+
+    <p class="text" >Vous avez des questions ou vous souhaitez organiser votre événement avec nous ?</p>
+
+    <p class="text" >Contactez nous via le formulaire ou par téléphone au 01 22 33 44 55.</p>
+       <div class="contactIcone">
+                <p class="text">SUIVEZ NOUS</p>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+        </div>
+</div>
+  <div class="col-12 col-sm-6 col-lg-6">
+  {{ form_start( form )}}
+    {# <div class="form"> #}
+      {{ form_row(form.nom)}}
+      {{ form_row(form.prenom)}}
+      {{ form_row(form.email )}}
+      {{ form_row(form.telephone )}}
+      {{ form_row(form.message )}}
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    {# </div> #}
+  {{ form_end( form )}}
+</div>
+</div>
+</div>
+
+
+{% endblock %}

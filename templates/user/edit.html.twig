@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le compte{% endblock %}
+
+{% block body %}
+    <h2>Modifier le compte</h2>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    {# {{ include('user/_delete_form.html.twig') }} #}
+   
+{% endblock %}

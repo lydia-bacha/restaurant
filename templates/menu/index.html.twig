@@ -1,0 +1,47 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}La liste des menus{% endblock %}
+
+{% block body %}
+    
+    <h2> Bienvenue {{app.user.nom}}</h2>
+    <h1>Les plats disponibles en restaurant</h1>
+
+
+
+<div class="container-tableau">
+    <p class="text">
+        {# Pour créer un nouveau plat cliquez sur ce lien <a href="{{ path('menu_new') }}">Un nouveau plat</a>  #}
+        <a href="{{ path('menu_new') }}"><button class=" btn btn-success btn-lg">Nouveau plat</button></a>
+    </p>
+    <table class="table table-secondary table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for menu in menus %}
+            <tr>
+             
+                <td>{{ menu.nom }}</td>
+                <td><img src="{{asset ("images/menu/" ~ menu.image )}}" alt="{{menu.nom}}"  class="imgAdmin"></td>
+                <td>{{ menu.prix }}€</td>
+                <td>
+                    <a href="{{ path('menu_show', {'id': menu.id}) }}"> <button class="btn btn-info"> <i class="far fa-eye"></i></button> </a>
+                    <a href="{{ path('menu_edit', {'id': menu.id}) }}"> <button class="btn btn-info"><i class="fas fa-edit"></i></button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+{% endblock %}

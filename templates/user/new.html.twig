@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+ {# <section class="acceuil">
+
+    <h1>Le Café Gourmand</h1>
+    <div><p>174 RUE DE LA ROQUETTE 75011 PARIS</p></div>
+
+    </section> #}
+
+    <h2>Inscription</h2>
+
+    {{ include('user/_form.html.twig') }}
+
+    {# <a href="{{ path('user_index') }}">back to list</a> #}
+{% endblock %}

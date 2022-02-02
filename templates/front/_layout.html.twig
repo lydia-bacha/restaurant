@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <section class="MonCompte">
+  
+  </section>
+
+ <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-1">
+        <li class="breadcrumb-item"><a href="{{ path ("user_show", {"id": app.user.id })}}">Mon profil</a></li>
+        <li class="breadcrumb-item"><a href="{{ path ("user_edit", {"id": app.user.id })}}">Modifier mon compte</a></li>
+
+        {% if is_granted ('ROLE_ADMIN') %}
+        {% else %}
+        <li class="breadcrumb-item"><a href="{{ path ("mes_reservations", {"id": app.user.id })}}">Consulter mes réservations</a></li>
+        <li class="breadcrumb-item"><a href="#">Consulter mes commandes</a></li>
+        {% endif %}
+        {# <li class="breadcrumb-item active" aria-current="page">Liste complète</li> #}
+    </ol>
+</nav>
+{% endblock %}

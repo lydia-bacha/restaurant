@@ -1,0 +1,28 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block body %}
+<section class="leMenu">
+
+        <h1>{{categorie.nom}}</h1>
+
+</section>
+<br><br><br>
+
+<div class="container">
+<div class="row">
+        {% for  menu in categorie.menus %}
+        <div class="col-12 col-sm-6 col-lg-4">
+                <h3>
+                        <a href="{{path ("show_menu_detail", {"id": menu.id} ) }}">{{menu.nom}}</a>
+                        <p class="prix">{{menu.prix}}€</p>
+                </h3>      
+                <div class="imageMenu">
+                        <a href="{{path ("show_menu_detail", {"id": menu.id} ) }}"><img src="{{asset ("images/menu/" ~ menu.image )}}" alt="{{menu.nom}}"  class="imgMenu">
+                        </a>
+                </div>
+        </div>
+        {% endfor %}
+</div>
+</div>
+
+{% endblock %}

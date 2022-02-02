@@ -1,0 +1,39 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}Gallerie index{% endblock %}
+
+{% block body %}
+    <section class="Gallerie">
+        <h1>Galerie</h1>
+    </section>
+    <br><br>
+    {% if is_granted ('ROLE_ADMIN') %} 
+        <a href="{{ path('gallerie_new') }}"><button class="btn btn-success text "> Une nouvelle image </button></a>
+    {% endif %}
+   
+    <div class="container">
+        <div class="row">
+        {% for gallerie in galleries %}
+            <div class="col-12 col-sm-6 col-lg-4 containerGallerie">
+
+                {% if is_granted ('ROLE_ADMIN') %}
+
+                    <div class="btnsupp">{{ include('gallerie/_delete_form.html.twig') }}</div>
+                    <div class="lien">
+                    <a href="{{ path('gallerie_edit', {'id': gallerie.id}) }}"><button class="btn btn-light lien">Modifier</button></a>
+                    </div> 
+                {% endif %}
+
+                <img src="{{asset ("images/gallerie/" ~ gallerie.image )}}" class="imgGallerie" >
+
+            </div> 
+
+        {% endfor %}
+        </div> 
+    </div> 
+
+
+
+
+      
+{% endblock %}

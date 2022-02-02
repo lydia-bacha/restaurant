@@ -1,0 +1,46 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block body %}
+    <h1> Les Categories</h1>
+  
+
+<div class="container-tableau">
+  <p class="text">
+    {# Pour créer une nouvelle catégorie cliquez sur ce lien <a href="{{ path('categorie_new') }}">une nouvelle catégorie</a>  #}
+    
+        <a href="{{path('categorie_new')}}"><button class=" btn btn-success btn-lg">Nouvelle catégorie</button></a>
+    </p>
+    <table class="table table-secondary table-striped">
+        <thead>
+            <tr>
+
+                <th>Nom</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.nom }}</td>
+                <td>
+                    <img src="{{asset ("images/categorie/" ~ categorie.image )}}" alt="{{categorie.nom}}" class="imgAdmin">
+                </td>
+                <td>
+                
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"><button class=" btn btn-info"> <i class="far fa-eye icones"></i></button> </a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"> <button class="btn btn-info"><i class="fas fa-edit icones"></i></button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

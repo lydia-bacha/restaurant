@@ -1,0 +1,31 @@
+{% extends "front/layout.html.twig" %}
+
+{% block body %}
+    <section class="reservation">
+        <h1>Résérvation</h1>
+    </section>
+    
+    <p class="text">Nous vous proposons de réserver votre table :
+
+        <ul>
+            <li class="text">- soit par téléphone : 01 22 33 44 55 </li>
+    </p>
+  {# si je suis connecte=>donc automatiquement je suis déja inscrit sur le site => redirection vers  la liste de mes reservations  avec le formulaire de reservation (ici on a 2liens qui ramène au même formulaire de reservation)#}
+    {% if app.user %}
+
+      <li class="text" >- soit par internet, en remplissant <a href="{{path ("reservation_new")}}">le formulaire de réservation</a> </li></ul>
+      <p class="text"> Si vous avez déjà une réservation et que vous voulez la consulter <a href="{{path ("mes_reservations")}}">cliquez ici</a></p>
+      
+
+    {{ include('reservation/_form.html.twig') }}
+
+    {% else %}
+
+      <li class="text">- soit par internet, en remplissant <a href="{{path ("app_login")}}">le formulaire de réservation</a> </li></ul>
+      <p class="text"> Si vous avez déjà une réservation et que vous voulez la consulter <a href="{{ path ("app_login")}}">  cliquez ici</a>
+      </p>
+  {% endif %}
+
+    {# <a href="{{ path('reservation_index') }}">back to list</a> #}
+{% endblock %}
+

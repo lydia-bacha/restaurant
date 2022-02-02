@@ -1,0 +1,43 @@
+{% extends 'front/layout.html.twig' %}
+{% block title %}Mes réservations{% endblock %}
+{% block body %}
+
+{# afficher le message de réservation efféctué #}
+
+
+<div class="mes_reservation">
+        <h2>Vos réservations</h2>
+  {# {% if app.flashes("info") is defined  %} 
+    {% for message in app.flashes("info")%}
+        <div class= "textReservation">
+            {{message}}
+        </div>
+{% endfor %}
+{% endif %} #}
+        <p class="text">Les reservation de {{app.user.nom}} {{app.user.prenom}}  :</p>
+</div>
+        <div class="container-tableau">
+                <table class="table table-secondary table-striped">
+                        <thead>
+                        <tr>
+                                <th>Nom</th>
+                                <th>prenom</th>
+                                <th>date</th>
+                                {# <th>Actions</th> #}
+                        </tr>
+                        </thead>
+                        <tbody>    
+                                {% for reservation in reservations %}
+                                <tr>
+                                <td>{{ reservation.nom }}</td>
+                                <td>{{ reservation.prenom }}</td>
+                                <td>{{reservation.date|date("d/m/Y")}}</td>
+                                {# <td>
+                                        <a href="{{ path('reservation_show', {'id': reservation.id}) }}"><button class="btn btn-info"> <i class="far fa-eye"></i></button> </a>
+                                        <a href="{{ path('reservation_edit', {'id': reservation.id}) }}"> <button class="btn btn-info"><i class="fas fa-edit"></i></button></a>
+                                </td> #}
+                                {% endfor %}
+                        </tbody>
+                </table>
+        </div>
+{% endblock %}

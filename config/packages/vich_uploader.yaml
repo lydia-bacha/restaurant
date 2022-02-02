@@ -1,0 +1,13 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        image_config:
+            uri_prefix: /images/menu
+            upload_destination: '%kernel.project_dir%/public/images/menu'
+        photo_config:
+            uri_prefix: /images/categorie
+            upload_destination: '%kernel.project_dir%/public/images/categorie'
+        gallerie_config:
+            uri_prefix: /images/gallerie
+            upload_destination: '%kernel.project_dir%/public/images/gallerie'

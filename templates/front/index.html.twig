@@ -1,0 +1,110 @@
+{% extends "front/layout.html.twig" %}
+
+{% block title %}Bienvenue{% endblock %}
+
+{% block body %}
+
+
+
+
+ {# <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{{asset ('img/acceuil.jpg')}}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{asset ('img/brunch.jpg')}}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{asset ('img/lacarte.jpg')}}" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+</div> #}
+
+
+
+{# la section acceuil #}
+
+    <section class="acceuil">
+
+    <h1>Le Café Gourmand</h1>
+    <div><p>174 RUE DE LA ROQUETTE 75011 PARIS</p></div>
+
+    </section>
+
+{# La section découvrir  #}
+<div class="container">
+  <div class="row">
+        <div class="col-12 col-sm-6 col-lg-6">
+            <h2>Découvrir <br> Le Café Gourmand</h2>
+                <p class="text"> Le Café gourmand porte bien son nom, et repaire les gourmand locaux. Petit déjeuner, déjeuner,goûter et Café. 100% fait maison avec amour et bonne humeur, avec des plats de qualité, un accueil attentif, service soigné et cadre agréable.
+                </p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-6">
+            <img src="{{ asset ("img/plat.jpg")}}" alt="un brunch sur une table" class="img-acceuil">
+        </div>
+    </div>
+</div>
+<br><br>
+ <!--image fixe1-->       
+
+        <section class="cuisine">
+            <div class="text-cuisine">Une Cuisine Gaurmande</div>
+        </section>
+
+
+<!--La section gallerie-->
+        <section>
+
+            <h2>Découvrir </br> Notre Cuisine</h2>
+            
+            <div class="text">
+                <p>Bonne nouvelle pour les amoureux de bonne cuisine, de bon café et de desserts demesurés : le haut de la rue de la Roquette vous accueille désormais dans un endroit taillé à la mesure de vos envies.</p><br>
+
+                <p class="etoile">***</p>
+                <p>Le Café Gourmand apporte son savoir-faire en matière de burgers en proposant produits frais et de qualité et avec des recettes aussi gourmandes les unes que les autres. </p><br>
+                <p class="etoile">***</p>
+                <p>Pour un Café, ou un déjeuner, le Café Gourmand se taille à vos envies.</p><br>
+             
+            </div>
+
+            <div class="image-cuisine">
+           
+                <img src="{{asset ("img/4.jpg")}}" alt="" class="img-cuisine">
+                <img src="{{asset ("img/18.jpg")}}" alt="" class="img-cuisine">
+                <img src="{{asset ("img/11.jpg")}}" alt="" class="img-cuisine">
+                <img src="{{asset ("img/20.jpg")}}" alt="" class="img-cuisine">
+             
+            </div>  
+        </section>
+
+<!--La séction des événement-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-6">
+                <h2>Vos Prchianes Evénement</h2>
+                <p class="text">Le Café Gourmand vous accompagne dans l’organisation de vos événements,Privatisez une partie notre boutique faites appel à nos talents de traiteur pour vos événements professionnels ou privés. Vous pouvez nous contatcez via <a href="{{ path ("contact")}}"> le formulaire de conatct</a></p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6">
+                <img src="img/evenement.jpg" alt="" class="img-acceuil">
+            </div>
+        </div>  
+    </div>
+
+
+{% endblock %}

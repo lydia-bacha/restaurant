@@ -1,0 +1,36 @@
+{% extends 'front/layout.html.twig' %}
+
+
+{% block body %}
+<section class="leMenu">
+
+        {# <h1>{{categorie.nom}}</h1> #}
+
+</section>
+
+<div class="container">
+<div class="row">
+  <div class="col-12 col-sm-6 col-lg-6">
+  <br><br><br>
+  <br><br><br>
+        <div>
+            <p class="text">Description: {{menu.description}}</p>
+            <p class="text">Les allérgenes: {{menu.allergene}}</p>
+            <p class="text">Le prix: {{menu.prix}}€</p>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-6">
+        <div class="image_show">
+        <h2>{{menu.nom}}</h2>
+            <img src="{{asset ("images/menu/" ~ menu.image)}}" alt="{{menu.nom}}" class="imageShow">
+        </div>
+
+    </div>
+    
+  
+</div>
+</div>
+
+
+{% endblock %}

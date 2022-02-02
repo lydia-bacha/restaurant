@@ -1,0 +1,50 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Menu{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-1  bg-light">
+        <li class="breadcrumb-item"><a href="{{ path('menu_index') }}">La liste complète</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Fiche détaillée </li>
+    </ol>
+</nav>
+    <div class="d-flex bd-highlight mb-5">
+    <div class="p-2 bd-highlight">
+        <a href="{{ path('menu_edit', {'id': menu.id}) }}"> <button class="btn btn-primary"> <i class="fas fa-edit"></i> </button></a>
+    </div>
+    <div class="p-2 bd-highlight">
+        {{ include('menu/_delete_form.html.twig') }}
+    </div>
+    </div>
+    <h2>{{ menu.nom }}</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ menu.nom }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{asset ("images/menu/" ~ menu.image )}}" alt="{{menu.nom}}"  class="imgAdmin"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ menu.description }}</td>
+            </tr>
+            <tr>
+                <th>Allergène</th>
+                <td>{{ menu.allergene }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ menu.prix }}€</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+ 
+{% endblock %}

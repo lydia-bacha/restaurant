@@ -1,0 +1,16 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset ("css/style_admin.css")}}">
+{% endblock %}
+{% block body %}
+
+{{ form_start(form) }}
+<div class="form">
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+    <br>
+    
+    <p class="text">Revenir à la liste<a href="{{ path('categorie_index') }}" class="link"> des catégories</a></p>
+</div>
+{{ form_end(form) }}
+{% endblock %}

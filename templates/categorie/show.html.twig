@@ -1,0 +1,40 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-1  bg-light">
+        <li class="breadcrumb-item"><a href="{{ path('categorie_index') }}">La liste complète</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Fiche détaillée </li>
+    </ol>
+</nav>
+    <div class="d-flex bd-highlight mb-5">
+    <div class="p-2 bd-highlight">
+        <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"> <button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+    </div>
+    <div class="p-2 bd-highlight">
+         {{ include('categorie/_delete_form.html.twig') }}
+    </div>
+    </div>
+    
+<h1>Categorie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                    <td> <img src="{{asset ("images/categorie/" ~ categorie.image )}}" alt="{{categorie.nom}}" class="imgAdmin">
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

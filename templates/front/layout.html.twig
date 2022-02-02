@@ -1,0 +1,67 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset ("css/style_front.css")}}">
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src='js/main.js'></script>
+     
+{% endblock %}
+
+{% block header %}
+
+{# la barre de navigation #}
+    <div>
+        <a href="{{path ("front")}}"><img src="{{ asset ("img/logo.png")}}" alt="logo" class="logo"></a>
+    </div>
+    <nav class="bar_nav">   
+        <label for="check" class="menu"><i class="fas fa-bars"></i></label>
+        <input type="checkbox" id="check">
+        <ul class="nav_list">
+            <li><a href="{{path ("front")}}">Accueil</a></li>
+            <li><a href="{{path ("front_menu")}}">La carte</a></li>
+            <li><a href="{{ path ("reservation_new")}}">Réserver</a></li>
+            <li><a href="{{path ("commander")}}">Commander</a></li>
+            <li><a href="{{ path ("contact")}}">Contact</a></li>
+            <li><a href="{{ path ("gallerie_index")}}">Galerie</a></li>
+
+            {% if app.user %} {# si on est connecté on a un lien de déconnexion / Mon compte#}
+               <li><a href="{{path ("mon_compte")}}">Mon compte</a></li> 
+                <li><a href="{{path ("app_logout")}}">Déconnexion</a></li>
+               
+            {% else %}  {# sinon on a un lien Connexion #}
+                <li><a href="{{path ("app_login")}}">Connexion</a></li>
+            {% endif %}
+
+            {# si l'utlisateur connecté est un admin => afficher ce lien pour aller directement dans l'espace admin #}
+            {% if is_granted ('ROLE_ADMIN') %} 
+            <li><a href="{{path ("menu_index") }}">Espace admin</a></li>
+            {% endif %}
+        </ul>
+
+    </nav>
+
+
+{% endblock %}
+{% block footer %}
+
+    {# <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.950243885576!2d2.3842794156744227!3d48.859159179287666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66df46759709d%3A0xb7a321521b8c125!2s174%20Rue%20de%20la%20Roquette%2C%2075011%20Paris!5e0!3m2!1sfr!2sfr!4v1620938464650!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div> #}
+    <footer>
+            <div class="icone">
+                <p>SUIVEZ NOUS</p>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+
+            </div>
+            <div class="pied-page">
+                <p>Le Café Gaurmand *174 RUE DE LA ROQUETTE 75011 PARIS* </p>
+                <p>COPYRIGHT </p>
+            </div>
+                
+    </footer>
+ 
+ 
+ {% endblock %} 
